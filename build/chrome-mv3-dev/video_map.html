@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Video Map</title>
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // URL 파라미터에서 위치 데이터를 파싱하는 함수
+        function getLocationsFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const locationsParam = params.get('locations');
+            if (locationsParam) {
+                try {
+                    return JSON.parse(decodeURIComponent(locationsParam));
+                } catch (e) {
+                    console.error("Error parsing locations from URL:", e);
+                    return [];
+                }
+            }
+            return [];
+        }
+
+        // 이 함수는 Google Maps API가 로드된 후 호출됩니다.
+        function initMap() {
+            const locations = getLocationsFromUrl();
+            const defaultCenter = locations.length > 0 ?
+                { lat: locations[0].lat, lng: locations[0].lng } :
+                { lat: 37.5665, lng: 126.9780 }; // 기본값: 서울 시청
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: defaultCenter,
+                zoom: 12,
+                gestureHandling: 'greedy',
+                disableDefaultUI: true
+            });
+
+            locations.forEach(loc => {
+                new google.maps.Marker({
+                    position: { lat: loc.lat, lng: loc.lng },
+                    map: map,
+                    title: loc.name
+                });
+            });
+        }
+    </script>
+    <!-- Google Maps JavaScript API 로드 -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>
