@@ -1,0 +1,21 @@
+.location-finder-button {
+  display: flex;
+  align-items: center; /* 아이콘을 중앙에 정렬 */
+  justify-content: center;
+  padding: 0 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+}
+
+.location-finder-button img {
+  width: 24px;
+  height: 24px;
+  transform: translateX(9px); /* 아이콘을 오른쪽으로 밈 */
+}
+
+.location-finder-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}

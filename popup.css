@@ -1,0 +1,38 @@
+body {
+  width: 320px;               /* 팝업 크기에 맞춤 */
+  text-align: center;         /* 텍스트 가운데 정렬 */
+  font-family: sans-serif;
+  margin: 0;                  /* 기본 여백 제거 */
+  padding: 15px 10px;         /* 전체 여백 약간 증가 */
+  box-sizing: border-box;     /* 패딩 포함 크기 계산 */
+  word-break: break-word;     /* 긴 URL 줄바꿈 지원 */
+}
+
+.popup-container {
+  padding: 10px;
+  width: 100%;                /* body 너비에 맞춤 */
+  box-sizing: border-box;
+  display: flex;              /* 플렉스 박스 활성 */
+  flex-direction: column;     /* 수직 정렬 */
+  align-items: center;        /* 가로 중앙 정렬(버튼 중앙 포함) */
+  text-align: center;         /* 텍스트도 중앙 정렬 */
+}
+
+.url-text {
+  word-break: break-all;     /* 긴 단어(링크) 중간에서 강제 줄바꿈 */
+  width: 100%;               /* 부모 컨테이너 너비에 맞춰 줄바꿈 */
+  text-align: center;
+  margin: 12px 0 20px 0;
+  font-size: 15px;
+}
+
+button {
+  width: 180px;               /* 버튼 넓이 확대 */
+  padding: 10px;
+  margin-top: 15px;           /* 위쪽 마진 여유 */
+  cursor: pointer;
+  white-space: nowrap;        /* 버튼 글씨 줄바꿈 방지 */
+  display: block;             /* 버튼 영역 중앙 배치용 */
+  margin-left: auto;          /* 자동 마진으로 완전 중앙 */
+  margin-right: auto;
+}
